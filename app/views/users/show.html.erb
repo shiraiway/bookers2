@@ -1,2 +1,14 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<!--ユーザーの詳細画面-->
+<h2>Books</h2>
+
+<% @books.each do |book| %><!--ユーザーが投稿したBook一覧-->
+<div>
+  <p>ユーザーアイコン</p>
+  <%= link_to book_path(book.id) do %>
+    <p>title: <%= book.title %></p>
+  <% end %>
+  <p>option: <%= book.body %></p>
+</div>
+
+<% end %><!--ユーザーが投稿したBook一覧-->
+
