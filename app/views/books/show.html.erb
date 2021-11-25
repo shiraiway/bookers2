@@ -1,12 +1,14 @@
-<!--Bookの詳細画面-->
+<!--Book一覧-->
 <h2>Book detail</h2>
-<div>
-  <p>ユーザー画像</p>
-  <p>タイトル <%= @book.title %></p>
-  <p>テキスト <%= @book.body %></p>
-  <p>編集</p>
-  
-  <% if @book.user == current_user %><!--削除-->
-    <%= link_to"destroy",book_path(@book),method: :delete %>
-  <% end %><!--削除-->
-</div>
+
+<!--ユーザーアイコン-->
+<p><%= attachment_image_tag @book.user, :profile_image, :fill, 50, 50, fallback:"no_image.jpg" %></p>
+<!--ユーザーネーム-->
+<%= link_to user_path(@book.user) do %>
+  <%= @book.user.name %>
+<% end %>
+
+<%= @book.title %>
+<%= @book.body %>
+
+

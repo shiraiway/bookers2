@@ -1,11 +1,22 @@
 <!--ユーザーの詳細画面-->
-<h2>Books</h2>
-
-<% @books.each do |book| %><!--ユーザーが投稿したBook一覧-->
+<h2>User info</h2><!--ユーザー詳細、編集ボタン-->
 <div>
-  <p>ユーザーアイコン</p>
+  <h4>name: <%= @user.name %></h4>
+  <h4>introduction: <%= @user.introduction %></h4>
+  <%= attachment_image_tag @user, :profile_image, :fill,50,50,format:'jpeg',fallback: "no_image.jpg" %>
+  <% if @user.id == current_user.id %>
+    <p><%= link_to"人と歯車アイコン",edit_user_path(@user) %></p>
+  <% end %>
+</div>
+
+<h2>Books</h2><!--ユーザーが投稿したBook一覧-->
+
+<% @books.each do |book| %>
+<div>
+  <p><%= attachment_image_tag book.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %></p>
+  <h4>Title</h4>
   <%= link_to book_path(book.id) do %>
-    <p>title: <%= book.title %></p>
+    <p><%= book.title %></p>
   <% end %>
   <p>option: <%= book.body %></p>
 </div>

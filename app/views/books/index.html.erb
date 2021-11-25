@@ -14,10 +14,12 @@
 
 <% @books.each do |book| %>
 <div>
-  <p>ユーザー画像 <%= book.user.name %></p>
+  <p>ユーザー画像<%= attachment_image_tag book.user, :profile_image, :fill, 50, 50, fallback:"no_image.jpg" %></p>
+  <h4>Title</h4>
   <%= link_to book_path(book.id) do %>
-    <p>title: <%= book.title %></p>
+    <p><%= book.title %></p>
   <% end %>
-  <p>option: <%= book.body %></p>
+  <h4>Opinion</h4>
+  <p><%= book.body %></p>
 </div>
 <% end %>
