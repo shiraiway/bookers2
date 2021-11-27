@@ -1,4 +1,11 @@
-<!--Book一覧-->
+<!--フラッシュメッセージ-->
+<% if flash[:notice] %>
+  <div class="alert">
+    <%= notice %>
+  </div>
+<% end %><!--フラッシュメッセージ-->
+
+<!--個人が投稿したBook一覧-->
 <h2>Book detail</h2>
 
 <!--ユーザーアイコン-->
@@ -11,4 +18,9 @@
 <%= @book.title %>
 <%= @book.body %>
 
-
+<!--ログイン時編集と削除を表示-->
+<% if @book.user == current_user %>
+  <p><%= link_to"Edit",edit_book_path(@book) %> </p>
+  <p><%= link_to"Destroy",book_path(@book.id),method: :delete,"data-confirm"=>"Are you sure?" %></p>
+<% end %>
+<!--ログイン時編集と削除を表示-->

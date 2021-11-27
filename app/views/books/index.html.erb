@@ -1,3 +1,16 @@
+<!--エラーメッセージ-->
+<% if @book.errors.any? %>
+  <ul class="error-box">
+    <h3 class="error-title">
+      <%= @book.errors.count %> errors prohibited this obj from being saved:
+    </h3>
+    <div class="error-message">
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </div>
+  </ul>
+<% end %><!--エラー-->
 
 <h2>New book</h2><!--新規投稿-->
 <%= form_with model: @book,local:true do |f| %>
