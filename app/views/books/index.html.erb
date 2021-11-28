@@ -26,28 +26,16 @@
   </div>
 <% end %><!--サクセスメッセージ-->
 
-<!--エラーメッセージ-->
-<% if @book.errors.any? %>
-  <ul class="error-box">
-    <h3 class="error-title">
-      <%= @book.errors.count %> errors prohibited this obj from being saved:
-    </h3>
-    <div class="error-message">
-      <% @book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </div>
-  </ul>
-<% end %><!--エラー-->
+
 
 <div class="container px-5 px-sm-0">
   <div class="row"><!--flex-->
 
     <div class="col-md-3"><!--左側-->
 
-      <!--新規投稿-->
-      <%= render 'books/form',book: @book %>
-      <!--新規投稿-->
+    <!--新規投稿-->
+    <%= render 'books/form',book: @book %>
+    <!--新規投稿-->
 
     </div><!--左側-->
 

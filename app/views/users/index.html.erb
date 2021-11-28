@@ -1,11 +1,14 @@
 <div class="container px-5 px-sm-0">
-  <div class="row"><!--flex-->
+  <div class="row">
 
     <div class="col-md-3"><!--左側-->
+    <!--ユーザーインフォ-->
+    <%= render 'users/info',user: @user %>
+    <!--ユーザーインフォ-->
       
-      <!--新規投稿-->
-      <%= render 'books/form',book: @book %>
-      <!--新規投稿-->
+    <!--新規投稿-->
+    <%= render 'books/form',book: @book %>
+    <!--新規投稿-->
 
     </div><!--左側-->
     
@@ -40,6 +43,6 @@
       
     </div><!--右側-->
 
-  </div><!--flex-->
+  </div><!--row-->
 </div><!--container-->
 
