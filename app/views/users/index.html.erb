@@ -1,17 +1,45 @@
-<!--ユーザー一覧-->
-<h2>Users</h2>
+<div class="container px-5 px-sm-0">
+  <div class="row"><!--flex-->
 
-<% @users.each do |user| %>
-  <h4>image</h4>
-  <p>ユーザー画像<%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback:"no_image.jpg" %></p>
+    <div class="col-md-3"><!--左側-->
+      
+      <!--新規投稿-->
+      <%= render 'books/form',book: @book %>
+      <!--新規投稿-->
 
-  <h4>name</h4>
-  <%= user.name %>
+    </div><!--左側-->
+    
+    <div class="col-md-8 offset-md-1"><!--右側-->
 
-  <%= link_to user_path(user.id) do %>
-    <p>Show</p>
-  <% end %>
+      <!--ユーザー一覧-->
+      <h2>Users</h2>
+      
+      <table class="table">
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>name</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td><%= attachment_image_tag user, :profile_image, size:"40x40", fallback:"no_image.jpg" %></td>
+            <td><%= user.name %></td>
+            <td>
+              <%= link_to user_path(user.id) do %>
+                <p>Show</p>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      
+    </div><!--右側-->
 
-<% end %>
-
+  </div><!--flex-->
+</div><!--container-->
 

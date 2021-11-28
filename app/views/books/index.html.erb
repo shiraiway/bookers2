@@ -1,3 +1,10 @@
+<!--サクセスメッセージ-->
+<% if flash[:notice] %>
+  <div class="alert">
+    <%= notice %>
+  </div>
+<% end %><!--サクセスメッセージ-->
+
 <!--エラーメッセージ-->
 <% if @book.errors.any? %>
   <ul class="error-box">
@@ -12,27 +19,71 @@
   </ul>
 <% end %><!--エラー-->
 
-<h2>New book</h2><!--新規投稿-->
-<%= form_with model: @book,local:true do |f| %>
-  <h4>title</h4>
-  <%= f.text_field:title %>
-  <h4>option</h4>
-  <%= f.text_area:body %>
+<!--サクセスメッセージ-->
+<% if flash[:notice] %>
+  <div class="alert">
+    <%= notice %>
+  </div>
+<% end %><!--サクセスメッセージ-->
 
-  <%=f.submit"Create Book" %>
+<!--エラーメッセージ-->
+<% if @book.errors.any? %>
+  <ul class="error-box">
+    <h3 class="error-title">
+      <%= @book.errors.count %> errors prohibited this obj from being saved:
+    </h3>
+    <div class="error-message">
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </div>
+  </ul>
+<% end %><!--エラー-->
 
-<% end %><!--新規投稿-->
+<div class="container px-5 px-sm-0">
+  <div class="row"><!--flex-->
 
-<h2>books</h2><!--投稿一覧画面-->
+    <div class="col-md-3"><!--左側-->
 
-<% @books.each do |book| %>
-<div>
-  <p>ユーザー画像<%= attachment_image_tag book.user, :profile_image, :fill, 50, 50, fallback:"no_image.jpg" %></p>
-  <h4>Title</h4>
-  <%= link_to book_path(book.id) do %>
-    <p><%= book.title %></p>
-  <% end %>
-  <h4>Opinion</h4>
-  <p><%= book.body %></p>
-</div>
-<% end %>
+      <!--新規投稿-->
+      <%= render 'books/form',book: @book %>
+      <!--新規投稿-->
+
+    </div><!--左側-->
+
+    <div class="col-md-8 offset-md-1"><!--右側-->
+    
+      <!--投稿一覧画面-->
+      <h2>Books</h2>
+
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @books.each do |book| %>
+          <tr>
+            <td><%= attachment_image_tag book.user, :profile_image, size:"40x40", fallback:"no_image.jpg" %></td>
+
+            <td>
+              <%= link_to book_path(book.id) do %>
+                <p><%= book.title %></p>
+              <% end %>
+            </td>
+
+            <td><%= book.body %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+
+    </div><!--右側-->
+
+  </div><!--flex-->
+</div><!--container-->

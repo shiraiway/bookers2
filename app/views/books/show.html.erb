@@ -5,22 +5,48 @@
   </div>
 <% end %><!--フラッシュメッセージ-->
 
-<!--個人が投稿したBook一覧-->
-<h2>Book detail</h2>
+<div class="container px-5 px-sm-0">
+  <div class="row"><!--flex-->
 
-<!--ユーザーアイコン-->
-<p><%= attachment_image_tag @book.user, :profile_image, :fill, 50, 50, fallback:"no_image.jpg" %></p>
-<!--ユーザーネーム-->
-<%= link_to user_path(@book.user) do %>
-  <%= @book.user.name %>
-<% end %>
+    <div class="col-md-3"><!--左側-->
 
-<%= @book.title %>
-<%= @book.body %>
+      <!--新規投稿-->
+      <%= render 'books/form',book: @book %>
+      <!--新規投稿-->
 
-<!--ログイン時編集と削除を表示-->
-<% if @book.user == current_user %>
-  <p><%= link_to"Edit",edit_book_path(@book) %> </p>
-  <p><%= link_to"Destroy",book_path(@book.id),method: :delete,"data-confirm"=>"Are you sure?" %></p>
-<% end %>
-<!--ログイン時編集と削除を表示-->
+    </div><!--左側-->
+
+    <div class="col-md-8 offset-md-1"><!--右側-->
+
+      <!--個人が投稿したBook一覧-->
+      <h2>Book detail</h2>
+
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <%= attachment_image_tag @book.user, :profile_image, size:"40x40", fallback:"no_image.jpg" %>
+              <%= link_to user_path(@book.user) do %>
+                <%= @book.user.name %>
+              <% end %>
+            </td>
+            <td><%= @book.title %></td>
+            <td><%= @book.body %></td>
+            <!--ログイン時編集と削除を表示-->
+            <% if @book.user == current_user %>
+            <td>
+              <%= link_to"Edit",edit_book_path(@book), class: 'btn btn-sm btn-success' %>
+            </td>
+            <td>
+              <%= link_to"Destroy",book_path(@book.id), class: 'btn btn-sm btn-danger',method: :delete,"data-confirm"=>"Are you sure?" %>
+            </td>
+            <% end %>
+            <!--ログイン時編集と削除を表示-->
+          </tr>
+        </tbody>
+      </table>
+
+    </div><!--右側-->
+
+  </div><!--flex-->
+</div><!--container-->
