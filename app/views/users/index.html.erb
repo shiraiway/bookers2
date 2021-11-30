@@ -2,21 +2,22 @@
   <div class="row">
 
     <div class="col-md-3"><!--左側-->
-    <!--ユーザーインフォ-->
-    <%= render 'users/info',user: @user %>
-    <!--ユーザーインフォ-->
-      
-    <!--新規投稿-->
-    <%= render 'books/form',book: @book %>
-    <!--新規投稿-->
+
+      <!--ユーザーインフォ-->
+      <%= render 'users/info',user: @user %>
+      <!--ユーザーインフォ-->
+  
+      <!--新規投稿-->
+      <%= render 'books/form',book: @book %>
+      <!--新規投稿-->
 
     </div><!--左側-->
-    
+
     <div class="col-md-8 offset-md-1"><!--右側-->
 
       <!--ユーザー一覧-->
       <h2>Users</h2>
-      
+
       <table class="table">
         <thead>
           <tr>
@@ -25,7 +26,7 @@
             <th colspan="3"></th>
           </tr>
         </thead>
-        
+
         <tbody>
           <% @users.each do |user| %>
           <tr>
@@ -40,7 +41,7 @@
           <% end %>
         </tbody>
       </table>
-      
+
     </div><!--右側-->
 
   </div><!--row-->

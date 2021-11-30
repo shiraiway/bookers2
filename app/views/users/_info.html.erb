@@ -17,9 +17,7 @@
   </table><!--ユーザー詳細-->
 
   <div><!--ユーザー編集ボタン-->
-    <% if user.id == current_user.id %>
       <%= link_to edit_user_path(user) do %>
         <i class="btn btn-outline-secondary btn-block fas fa-user-cog"></i>
       <% end %>
-    <% end %>
   </div><!--ユーザーの詳細-->

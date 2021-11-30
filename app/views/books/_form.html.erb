@@ -1,11 +1,11 @@
 <h2>New book</h2><!--新規投稿-->
-<%= form_with model: book,local:true do |f| %>
+<%= form_with model: book,url: books_path,method: :post, local:true do |f| %>
 
   <h4>title</h4>
   <%= f.text_field :title %>
-  <h4>option</h4>
+  <h4>opinion</h4>
   <%= f.text_area :body %>
 
-  <%=f.submit"Create Book", class: 'btn btn-success' %>
+  <%= f.submit "Create Book", class: 'btn btn-success' %>
 
 <% end %><!--新規投稿-->

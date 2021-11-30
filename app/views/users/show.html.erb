@@ -1,18 +1,11 @@
-<!--フラッシュメッセージ-->
-<% if flash[:notice] %>
-  <div class="alert">
-    <%= notice %>
-  </div>
-<% end %><!--フラッシュメッセージ-->
-
 <div class='container px-5 px-sm-0'>
   <div class='row'>
-    
+
     <div class='col-md-3'><!--左側-->
     <!--ユーザーインフォ-->
     <%= render 'users/info',user: @user %>
     <!--ユーザーインフォ-->
-      
+
     <!--新規投稿-->
     <%= render 'books/form',book: @book %>
     <!--新規投稿-->
@@ -35,7 +28,11 @@
         <tbody>
         <% @books.each do |book| %>
           <tr>
-            <td><%= attachment_image_tag book.user, :profile_image, size:"40x40", fallback: "no_image.jpg" %></td>
+            <td>
+              <%= link_to user_path(book.user_id) do %>
+                <div><%= attachment_image_tag book.user, :profile_image, size:"40x40", fallback:"no_image.jpg" %></div>
+              <% end %>
+            </td>
             <td>
               <%= link_to book_path(book.id) do %>
                 <%= book.title %>

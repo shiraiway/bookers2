@@ -29,7 +29,7 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
               <li class="nav-item">
-                <%= link_to"home", user_path(current_user.id), class: 'fas fa-home nav-link text-light' %>
+                <%= link_to"Home", user_path(current_user.id), class: 'fas fa-home nav-link text-light' %>
               </li>
 
               <li class="nav-item">
@@ -56,7 +56,7 @@
               </li>
 
               <li class="nav-item">
-                <%= link_to "Sign-up", new_user_registration_path,  class: 'fas fa-user-plus nav-link text-light' %>
+                <%= link_to "Sign up", new_user_registration_path,  class: 'fas fa-user-plus nav-link text-light' %>
               </li>
 
               <li class="nav-item">
@@ -70,6 +70,12 @@
 
       </nav>
     </header>
+
+    <!--フラッシュメッセージ-->
+    <% flash.each do |key, value| %>
+     <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
+    <!--フラッシュメッセージ-->
 
     <%= yield %>
 

@@ -17,3 +17,28 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+.notice {
+  color: green;
+  text-align: left;
+}
+
+header {
+  margin-bottom: 10px;
+}
+
+footer {
+  margin-top: 40px;
+  text-align: center;
+}
+
+// bookers
+// ---------------------
+.navber-brand {
+  color: white;
+}
+
+// エラーメッセージ
+// ------------------------
+.error-box {
+  color: red;
+}

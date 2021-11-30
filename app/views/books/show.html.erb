@@ -1,18 +1,14 @@
-<!--フラッシュメッセージ-->
-<% if flash[:notice] %>
-  <div class="alert">
-    <%= notice %>
-  </div>
-<% end %><!--フラッシュメッセージ-->
-
 <div class="container px-5 px-sm-0">
   <div class="row"><!--flex-->
 
     <div class="col-md-3"><!--左側-->
-  
-      <!--新規投稿-->
-      <%= render 'books/form',book: @book %>
-      <!--新規投稿-->
+    <!--ユーザーインフォ-->
+    <%= render 'users/info',user: @user %>
+    <!--ユーザーインフォ-->
+
+    <!--新規投稿-->
+    <%= render 'books/form',book: @book_new %>
+    <!--新規投稿-->
     </div><!--左側-->
 
     <div class="col-md-8 offset-md-1"><!--右側-->
