@@ -33,7 +33,7 @@
               <%= link_to"Edit",edit_book_path(@book), class: 'btn btn-sm btn-success' %>
             </td>
             <td>
-              <%= link_to"Destroy",book_path(@book.id), class: 'btn btn-sm btn-danger',method: :delete,"data-confirm"=>"Are you sure?" %>
+              <%= link_to"Destroy",book_path(@book.id), class: 'btn btn-sm btn-danger',method: :delete,"data-confirm"=>"本当に消しますか?" %>
             </td>
             <% end %>
             <!--ログイン時編集と削除を表示-->
